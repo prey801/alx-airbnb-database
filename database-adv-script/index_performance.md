@@ -99,6 +99,38 @@ Adding indexes to frequently filtered or sorted columns **significantly improved
 
 ---
 
+## 🛠️ SQL Index Creation
+
+To create the necessary indexes, add the following commands to your `database_index.sql` file:
+
+```sql
+CREATE INDEX idx_bookings_user_id ON bookings(user_id);
+CREATE INDEX idx_bookings_property_id ON bookings(property_id);
+CREATE INDEX idx_bookings_created_at ON bookings(created_at);
+```
+
+---
+
+## 📏 Measuring Query Performance
+
+To measure query performance before and after adding indexes, use the `EXPLAIN` command in MySQL:
+
+```sql
+-- Before adding indexes
+EXPLAIN SELECT * FROM bookings WHERE user_id = 42;
+EXPLAIN SELECT * FROM bookings WHERE property_id = 15;
+EXPLAIN SELECT * FROM bookings ORDER BY created_at DESC;
+
+-- After adding indexes
+EXPLAIN SELECT * FROM bookings WHERE user_id = 42;
+EXPLAIN SELECT * FROM bookings WHERE property_id = 15;
+EXPLAIN SELECT * FROM bookings ORDER BY created_at DESC;
+```
+
+For more detailed analysis, you can use `EXPLAIN ANALYZE` (if supported) or measure execution time with your SQL client.
+
+---
+
 ## 📁 How to Use
 
 Ensure this file is saved as:
