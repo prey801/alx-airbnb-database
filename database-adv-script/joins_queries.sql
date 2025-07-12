@@ -6,6 +6,12 @@ SELECT p.*, r.*
 FROM properties p
 LEFT JOIN reviews r ON p.id = r.property_id;
 
+SELECT p.*, r.*
+FROM properties p
+LEFT JOIN reviews r ON p.id = r.property_id
+ORDER BY p.id;
+
+
 SELECT u.*, b.*
 FROM users u
 FULL OUTER JOIN bookings b ON u.id = b.user_id;
